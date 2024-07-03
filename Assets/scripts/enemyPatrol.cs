@@ -39,7 +39,7 @@ public class enemyPatrol : MonoBehaviour
         Debug.Log($"Current Point Position: {currentPoint.position}");
         Debug.Log($"Distance: {Vector2.Distance(transform.position, currentPoint.position)}");
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 1.5f ||Vector2.Distance(transform.position, currentPoint.position) < -1.5f) // Adjusted threshold
+        if (Vector2.Distance(transform.position, currentPoint.position) < 2f ||Vector2.Distance(transform.position, currentPoint.position) < -1.5f) // Adjusted threshold
         {
             rb.velocity = Vector2.zero;
             anim.SetBool("isAttacking", true);

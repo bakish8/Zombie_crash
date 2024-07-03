@@ -60,7 +60,7 @@ public class ZombieSpawner : MonoBehaviour
             if (patrolScript != null)
             {
                 patrolScript.currentPoint = targetPoint;
-                Debug.Log("Assigned currentPoint for the new zombie.");
+                Debug.Log($"Assigned currentPoint for the new zombie to {targetPoint.position}");
             }
             else
             {
