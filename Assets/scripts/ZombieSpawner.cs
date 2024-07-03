@@ -39,7 +39,7 @@ public class ZombieSpawner : MonoBehaviour
 
             // Instantiate a new zombie at the chosen spawn point with a slight random Y offset
             Vector3 spawnPosition = spawnPoint.position + new Vector3(0, Random.Range(-0.5f, 0.5f), 0);
-            spawnPosition.z = -1; // Explicitly set the Z position to -1
+            spawnPosition.z = -2; // Explicitly set the Z position to -1
             GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
 
             // Flip the zombie if it spawns from the right

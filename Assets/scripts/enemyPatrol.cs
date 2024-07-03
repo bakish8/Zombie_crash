@@ -38,16 +38,16 @@ public class enemyPatrol : MonoBehaviour
         Debug.Log($"Zombie Position: {transform.position}");
         Debug.Log($"Current Point Position: {currentPoint.position}");
         Debug.Log($"Distance: {Vector2.Distance(transform.position, currentPoint.position)}");
+    }
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 2f ||Vector2.Distance(transform.position, currentPoint.position) < -1.5f) // Adjusted threshold
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Home")
         {
             rb.velocity = Vector2.zero;
             anim.SetBool("isAttacking", true);
-            Debug.Log("Update: isRunning set to false");
+            Debug.Log("Trigger Enter: isRunning set to false and isAttacking set to true");
             isMoving = false;
-        }
-        else{
-            anim.SetBool("isAttacking", false);
         }
     }
 }
