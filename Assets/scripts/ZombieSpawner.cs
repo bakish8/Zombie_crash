@@ -12,9 +12,12 @@ public class ZombieSpawner : MonoBehaviour
     public int maxZombies = 10;
 
     private List<GameObject> activeZombies = new List<GameObject>();
+    private float initialHeight; // Store the initial height
 
     private void Start()
     {
+        // Store the initial height based on the first zombie's spawn point
+        initialHeight = leftSpawnPoint.position.y ;
         StartCoroutine(SpawnZombies());
     }
 
@@ -37,8 +40,8 @@ public class ZombieSpawner : MonoBehaviour
             bool spawnFromLeft = Random.Range(0, 2) == 0;
             Transform spawnPoint = spawnFromLeft ? leftSpawnPoint : rightSpawnPoint;
 
-            // Instantiate a new zombie at the chosen spawn point with a slight random Y offset
-            Vector3 spawnPosition = spawnPoint.position + new Vector3(0, Random.Range(-0.5f, 0.5f), 0);
+            // Instantiate a new zombie at the chosen spawn point with the same initial height
+            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, initialHeight, -1); // Set Z position to -1 explicitly
             spawnPosition.z = -2; // Explicitly set the Z position to -1
             GameObject newZombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
 
